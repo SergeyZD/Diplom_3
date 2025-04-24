@@ -10,6 +10,10 @@ class BasePage:
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 20)
 
+    @allure.step('Получить текущий URL')
+    def current_url(self):
+        return self.driver.current_url
+
     @allure.step("Ожидаем загрузки элемента")
     def wait_to_visibility(self, locator):
         self.wait.until(EC.visibility_of_element_located(locator))

@@ -46,7 +46,7 @@ class ConstructorPage(BasePage):
         self.click_element(LocatorsConstructorPage.CHECKOUT_BUTTON)
 
     @allure.step('Логиним пользователя')
-    def login(self):
+    def login(self, email, password):
         self.click_element(LocatorsConstructorPage.BUTTON_AUTH_ACCOUNT)
         self.send_keys_to_input(LocatorsConstructorPage.MAIL_INPUT, email)
         self.send_keys_to_input(LocatorsConstructorPage.PASSWORD_INPUT, password)
@@ -58,6 +58,3 @@ class ConstructorPage(BasePage):
         self.wait_to_visibility(LocatorsConstructorPage.ORDER_PREPARED)
         return self.get_element(LocatorsConstructorPage.ORDER_PREPARED)
 
-    @allure.step('Получаем текущую страницу')
-    def get_current_url(self):
-        return self.driver.current_url

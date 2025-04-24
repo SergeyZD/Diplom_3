@@ -10,14 +10,14 @@ class TestConstructor:
         test = ConstructorPage(driver)
         test.click_auth_button()
         test.click_constructor_button()
-        assert test.get_current_url() == Urls.MAIN_PAGE
+        assert test.current_url() == Urls.MAIN_PAGE
 
     @allure.title('Переход по клику на «Лента заказов»')
     def test_click_order_feed(self, driver):
         test = ConstructorPage(driver)
         test.click_auth_button()
         test.click_switch_order_feed()
-        assert test.get_current_url() == Urls.ORDER_FEED
+        assert test.current_url() == Urls.ORDER_FEED
 
     @allure.title('При клике на ингредиент, появится всплывающее окно с деталями')
     def test_click_ingredient_window_apper(self, driver):
@@ -46,7 +46,7 @@ class TestConstructor:
     def test_logged_user_can_place_order(self, driver):
         test = ConstructorPage(driver)
         test.click_auth_button()
-        test.login()
+        test.login(email="SergeyZdanovich15111@yandex.ru", password="123456")
         test.drag_and_drop_ingredient_fluorescent_bun_to_order()
         test.click_on_checkout_button()
         element = test.order_is_being_prepared()
